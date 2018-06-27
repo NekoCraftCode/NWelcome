@@ -16,27 +16,11 @@ public class OptionsEvent implements Listener {
         this.plugin = plugin;
     }
 
-    /*@EventHandler
-    public void PlayerJoin(final PlayerJoinEvent playerJoinEvent) {
-        final Player p = playerJoinEvent.getPlayer();
-        p.sendMessage(Util.Color(Messages.plugin_header()));
-        p.sendMessage("&f");
-        p.sendMessage("&f");
-        p.sendMessage("&f");
-        p.sendMessage("&f");
-        p.sendMessage("&f");
-        p.sendMessage("&6          Welcome to &4&k!!&9&lYourServerName&4&k!!");
-        p.sendMessage("&f");
-        p.sendMessage("&e                Links:");
-        p.sendMessage("&f");
-        p.sendMessage(Util.Color(Messages.plugin_footer()));
-    }*/
-
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
       Player player = (Player)event.getPlayer();
       if(Center.config.getBoolean("joinBroadcast")){
-          //event.setJoinMessage(Util.Color(Center.config.getString("playerJoinMsg").replace("%p", (CharSequence) event.getPlayer())));
+
           String playerJoinMsg = Center.config.getString("playerJoinMsg");
 
           playerJoinMsg = playerJoinMsg.replace("%playername%", player.getDisplayName());
@@ -49,10 +33,11 @@ public class OptionsEvent implements Listener {
 
       TextComponent joinMessageRaw = new TextComponent(Util.Color("&6              &lWebsite:"));
         String web = "false";
+
       if(!(Center.config.getString("clickEvents.click-open-website") == web)) {
             joinMessageRaw.setClickEvent( new ClickEvent( ClickEvent.Action.OPEN_URL, Center.config.getConfigurationSection("clickEvents").getString("click-open-website")));
-            //joinMessageRaw.setClickEvent( new ClickEvent( ClickEvent.Action.OPEN_URL, Center.config.getString("clickEvents.click-open-website") ) );
       }
+
       joinMessageRaw.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( Center.config.getString("hoverTooltip") ).create() ) );
       player.spigot().sendMessage(joinMessageRaw);
 
