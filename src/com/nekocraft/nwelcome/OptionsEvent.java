@@ -1,7 +1,6 @@
 package com.nekocraft.nwelcome;
 
 import net.md_5.bungee.api.chat.*;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -43,9 +42,9 @@ public class OptionsEvent implements Listener {
       player.spigot().sendMessage(joinMessageRaw);
 
     }
-
+    
+    @EventHandler
     public void onPlayerQuit​(PlayerQuitEvent event) {
-
         Player player = event.getPlayer();
         if(Center.config.getBoolean("joinBroadcast")){
 
