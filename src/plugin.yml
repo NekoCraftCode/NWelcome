@@ -1,0 +1,7 @@
+name: NWelcome
+main: com.nekocraft.nwelcome.Center
+version: 1.0
+authors: [CharlyG, NekoCraftYT]
+commands:
+   nwelcome:
+     aliases: [nw, nwl]
