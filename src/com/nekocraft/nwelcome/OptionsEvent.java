@@ -44,7 +44,7 @@ public class OptionsEvent implements Listener {
 
     }
 
-    public static void onPlayerQuit​(PlayerQuitEvent event) {
+    public void onPlayerQuit​(PlayerQuitEvent event) {
 
         Player player = event.getPlayer();
         if(Center.config.getBoolean("joinBroadcast")){
