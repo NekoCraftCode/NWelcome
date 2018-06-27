@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.Plugin;
 
 public class OptionsEvent implements Listener {
@@ -25,7 +26,7 @@ public class OptionsEvent implements Listener {
 
           playerJoinMsg = playerJoinMsg.replace("%playername%", player.getDisplayName());
 
-          Bukkit.broadcastMessage(Util.Color(playerJoinMsg));
+          event.setJoinMessage(Util.Color(playerJoinMsg));
 
       }
 
@@ -41,5 +42,19 @@ public class OptionsEvent implements Listener {
       joinMessageRaw.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( Center.config.getString("hoverTooltip") ).create() ) );
       player.spigot().sendMessage(joinMessageRaw);
 
+    }
+
+    public static void onPlayerQuit​(PlayerQuitEvent event) {
+
+        Player player = event.getPlayer();
+        if(Center.config.getBoolean("joinBroadcast")){
+
+            String playerLeaveMsg = Center.config.getString("playerLeaveMsg");
+
+            playerLeaveMsg = playerLeaveMsg.replace("%playername%", player.getDisplayName());
+
+            event.setQuitMessage(Util.Color(playerLeaveMsg));
+
+        }
     }
 }

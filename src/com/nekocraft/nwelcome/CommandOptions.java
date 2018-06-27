@@ -14,6 +14,8 @@ public class CommandOptions implements CommandExecutor
         if (!p.hasPermission("nwelcome.admin")) {
             commandSender.sendMessage(Util.Color("&c\u2716 " + Messages.No_Perm()));
             return true;
+        } else if (p.hasPermission("nwelcome.admin")){
+            commandSender.sendMessage(Messages.Help_Command());
         }
         return true;
     }

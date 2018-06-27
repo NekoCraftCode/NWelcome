@@ -1,6 +1,9 @@
 package com.nekocraft.nwelcome;
 
 import com.nekocraft.nwelcome.*;
+import org.bukkit.Bukkit;
+
+import java.util.ArrayList;
 
 public class Messages {
     public static String plugin_header;
@@ -35,6 +38,10 @@ public class Messages {
     }
 
     public static String playerLeave() {
+        return Center.config.getString("playerLeaveMsg");
+    }
+
+    public static String Help_Command() {
         return Center.config.getString("playerLeaveMsg");
     }
 }
